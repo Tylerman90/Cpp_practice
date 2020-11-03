@@ -1,6 +1,4 @@
 #include <iostream>
-#include <vector>
-#include <string>
 #include <fstream>
 #include <string>
 using namespace std;
@@ -16,7 +14,7 @@ int main (){
 
 	while(i <= 29){
 		char user_input;
-		cout << "Are you thinking of the following character? '" << Alphabet[i] << "' (y/n)\n" << endl;
+		cout << "Are you thinking of the letter '" << Alphabet[i] << "'? (y/n)\n" << endl;
 		cin >> user_input;
 		if ((user_input == 'y') && (Alphabet[i] != '!')){
 			user_word += Alphabet[i];
