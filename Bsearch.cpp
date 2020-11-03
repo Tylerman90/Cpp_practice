@@ -11,6 +11,7 @@ int main (){
 	'x', 'y', 'z'};
 
 	string user_word = "";
+	int qcount = 0;
 	int start = 0;
 	int stop = sizeof(Alphabet) - 1;
 	while(true){
@@ -22,7 +23,7 @@ int main (){
 			cout << "Is the letter '" << Alphabet[start] << "'?" << endl;
 			cin >> user_input;
 			if (user_input == 'y'){
-				cout << "You typed:\n" << user_word << endl;
+				cout << "You typed:\n" <<  user_word << endl;
 				return false;
 			}
 		} else if (start == stop){
