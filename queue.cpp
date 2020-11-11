@@ -1,4 +1,4 @@
-//A Queue by Mark Boady
+//A Queue by Tyler Gunter
 
 #ifndef _QUEUE_H_
 #define _QUEUE_H_
