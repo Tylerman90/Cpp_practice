@@ -7,6 +7,7 @@
 #include <iostream> //For IO
 #include <cstdlib> //For Random Numbers
 #include <ctime> //To find out what time it is
+using namespace std;
 
 //These are called function prototypes.
 //They tell the compiler and programmer what functions exists.
@@ -119,3 +120,54 @@ void test_size(int size, int num_of_tests)
 //-------------------------------------------------------
 //-------------------Merge Sort--------------------------
 //-------------------------------------------------------
+void print_merge_array(int* Array){
+	for(int i=0; i < sizeof(Array); i++){
+		cout << Array + i << endl;
+	}
+}
+
+int* copyPart(int* Array, int start, int stop, int* Aux){
+	int counter = 0;
+	for(int i = start; i <= stop; i++){
+		Aux[counter] = Array[i];
+		counter++;
+	}
+ return Aux;
+}
+
+void merge(int* Array, int start, int middle, int stop){
+	int auxSize = stop - start + 1;
+	int Auxxy [auxSize];
+	int* Aux = copyPart(Array, start, stop, Auxxy);
+	int auxMiddle = middle - start;
+	int i = 0;
+	int j = auxMiddle + 1;
+	for (int k = start; k <= stop; k++){
+		if (i > auxMiddle){
+			Array[k] = Aux[j];
+			j++;
+		} else if (j > auxSize - 1){
+			Array[k] = Aux[i];
+			i++;
+		} else if (Aux[j] > Aux[i]){
+			Array[k] = Aux[i];
+			i++;
+		} else {
+			Array[k] = Aux[j];
+			j++;
+		}
+	}
+}
+
+void msort(int* Array, int start, int stop){
+	if (start >= stop) {
+		return;
+	}
+	int middle = start + ((stop - start) / 2);
+	msort(Array, start, middle);
+	msort(Array, middle + 1, stop);
+	merge(Array, start, middle, stop);
+}
+void mergesort(int* Array, int size){
+	msort(Array, 0, size - 1);
+}

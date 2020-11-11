@@ -7,6 +7,7 @@
 #include <iostream> //For IO
 #include <cstdlib> //For Random Numbers
 #include <ctime> //To find out what time it is
+using namespace std;
 
 //These are called function prototypes.
 //They tell the compiler and programmer what functions exists.
@@ -119,3 +120,34 @@ void test_size(int size, int num_of_tests)
 //-------------------------------------------------------
 //-------------------Quick Sort--------------------------
 //-------------------------------------------------------
+void swap(int* a, int* b) 
+{ 
+    int t = *a; 
+    *a = *b; 
+    *b = t; 
+} 
+
+void quicksort(int A[], int size){
+	qsort(A, 0, size-1, __compar_fn_t());
+}
+
+int partition(int A[], int start, int stop){
+	int pivot = A[stop];
+	int i = (start - 1);
+	for (int j = start; j < stop - 1; j++) {
+		if (A[j] <= pivot) {
+			i++;
+			swap(&A[i], &A[j]);
+		}
+	}
+	swap(&A[i + 1], &A[stop]);
+	return (i + 1);
+}
+
+void qsort(int A[], int start, int stop){
+	if (start < stop) {
+		int p = partition(A, start, stop);
+		qsort(A, start, p - 1);
+		qsort(A, p + 1, stop);
+	}
+}

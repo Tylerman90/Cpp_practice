@@ -120,3 +120,17 @@ void test_size(int size, int num_of_tests)
 //-------------------Insertion Sort----------------------
 //-------------------------------------------------------
 
+void insertionsort(int* Array, int size){
+	int i = 1;
+	int temp = 0;
+	while (i < size) {
+		int j = i;
+		while (j > 0 && Array[j - 1] > Array[j]){
+			temp = Array[j - 1];
+			Array[j - 1] = Array[j];
+			Array[j] = temp;
+			j = j - 1;
+		}
+		i = i + 1;
+	}
+}
