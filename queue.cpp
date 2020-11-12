@@ -1,41 +1,50 @@
-//A Queue by Tyler Gunter
+#include <iostream>
+#include <queue>
+#include "queue.h"
 
-#ifndef _QUEUE_H_
-#define _QUEUE_H_
+using namespace std;
 
-//The Node
-struct Node
-{
-	int value;
-	struct Node* next;
-};
+struct Queue* make_queue() {
+    Queue* Q = new Queue();
+    Q->front = nullptr;
+    Q->back = nullptr;
+    return Q;
+}
+int front(struct Queue* Q){
+	if (Q->front == nullptr){
+		return 0;
+	}
+	return Q->front->value;
+}
 
-//The Queue
-struct Queue
-{
-	struct Node* front;
-	struct Node* back;
-};
+char empty(struct Queue* Q){
+	return Q->front == nullptr;
+}
 
-//The Methods
+void enqueue(struct Queue* Q, int x){
+    Node* newNode = new Node();
+    newNode->value = x;
+    newNode->next == nullptr;
+    if (Q->front == nullptr){
+    	Q->front = newNode;
+    	Q->back = newNode;
+    } else{
+    	Q->back->next = newNode;
+    	Q->back = newNode;
+    }
+}
 
-//Create A New Queue
-struct Queue* make_queue();
+int dequeue(struct Queue* Q) {
+	if (Q->front == nullptr){
+		return 0;
+	}
+	Q->front = Q->front->next; //get value from front
+	if(Q->front == nullptr){
+		Q->back = nullptr;
+	}
+return 0;
+}
 
-//Print out the Queue
-void print(struct Queue* queue);
-
-//What is at the front of the queue?
-int front(struct Queue* queue);
-
-//Is the Queue empty? 1=Yes 0=No
-char empty(struct Queue* queue);
-
-//Add a new item to the back of the Queue
-void enqueue(struct Queue* queue, int x);
-
-//Remove an item from the front of the queue
-int dequeue(struct Queue* queue);
-
-#endi
-
+int main(){
+	char empty(Queue* Q);
+}
